@@ -8,7 +8,7 @@ const myTodo = new Todo();
 
 function App() {
   const [todoItems, setTodoItems] = useState([]);
-  const [todoInput, setTodoInput] = useState("");
+  const [todoInput, setTodoInput] = useState("delete and type");
 
   const handleSubmission = (event) => {
     event.preventDefault();
@@ -45,7 +45,7 @@ function App() {
           {/*  */}
           <TodoList todoItems={todoItems} />
         </div>
-
+        {/* //Footer section */}
         <div className="flex justify-between bg-green-100 text-sm py-2 px-2">
           {/* Footer:  */}
 
