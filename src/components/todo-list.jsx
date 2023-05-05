@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MdAdd, MdOutlineCancel } from "react-icons/md";
+import { MdAdd, MdOutlineCancel, MdDeleteOutline } from "react-icons/md";
 
 export default function TodoList({ todoItems, handleToggle }) {
   if (todoItems.length == 0) {
@@ -26,6 +26,10 @@ export default function TodoList({ todoItems, handleToggle }) {
           >
             {todoItem.title}
           </p>
+
+          <span className="cursor-pointer ">
+            <MdDeleteOutline />
+          </span>
         </div>
       ))}
     </>
