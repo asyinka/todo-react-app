@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { MdAdd, MdOutlineCancel, MdDeleteOutline } from "react-icons/md";
 
-export default function TodoList({ todoItems, handleToggle }) {
+export default function TodoList({
+  todoItems,
+  handleToggle,
+  handleDeleteToDoItem,
+}) {
   if (todoItems.length == 0) {
     return (
       <div className="py-3 flex justify-center items-center flex-col gap-2 text-gray-500">
@@ -27,7 +31,10 @@ export default function TodoList({ todoItems, handleToggle }) {
             {todoItem.title}
           </p>
 
-          <span className="cursor-pointer ">
+          <span
+            onClick={() => handleDeleteToDoItem(todoItems.indexOf(todoItem))}
+            className="cursor-pointer "
+          >
             <MdDeleteOutline />
           </span>
         </div>

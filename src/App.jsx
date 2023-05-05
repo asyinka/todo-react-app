@@ -16,6 +16,15 @@ function App() {
     fetchToDos();
   };
 
+  //this function deletes todo Item
+  const handleDeleteToDoItem = (id) => {
+    myTodo.deleteToDoItem(id);
+
+    fetchToDos();
+
+    // setTodoItems([...myTodo.deleteToDoItem(id)]);
+  };
+
   //this function recalls the todo items and re renders the to do state
 
   function fetchToDos() {
@@ -29,6 +38,8 @@ function App() {
       alert("You have to add a to do");
       return;
     }
+
+    console.log(todoItems);
 
     event.preventDefault();
 
@@ -68,6 +79,7 @@ function App() {
           <TodoList
             todoItems={todoItems}
             handleToggle={handleToggleToDoStatus}
+            handleDeleteToDoItem={handleDeleteToDoItem}
           />
         </div>
         {/* //Footer section */}

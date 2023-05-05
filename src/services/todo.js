@@ -10,7 +10,7 @@ class Todo {
         isCompleted: false,
       },
     ];
-    this.lastId = 1;
+    this.lastId = 0;
   }
   //this function takes the to do to be added, update the id and add isCompleted. Then pushes the to do into the constructor's todoList
   //this takes the work of .prototype in js class
@@ -20,6 +20,8 @@ class Todo {
       id: ++this.lastId,
       isCompleted: false,
     };
+
+    console.log(todoObj);
 
     this.todoList.push(todoObj);
   }
@@ -40,6 +42,12 @@ class Todo {
     const foundToDoItem = this.todoList[foundToDoIndex];
 
     foundToDoItem.isCompleted = !foundToDoItem.isCompleted;
+  }
+  //this deletes select task at index using .splice but our id starts at 1 while index starts at 0 so i used index directly
+  deleteToDoItem(id) {
+    const leftToDos = this.todoList.splice(id, 1);
+
+    return this.todoList;
   }
 }
 
