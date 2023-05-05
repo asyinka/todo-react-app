@@ -21,8 +21,6 @@ class Todo {
       isCompleted: false,
     };
 
-    console.log(todoObj);
-
     this.todoList.push(todoObj);
   }
   //this function finally returns the whole lists of todoList objects
@@ -44,10 +42,22 @@ class Todo {
     foundToDoItem.isCompleted = !foundToDoItem.isCompleted;
   }
 
-  deleteToDoItem(id) {
+  deleteToDoItem(todo) {
     //this deletes select task at index using .splice but our id starts at 1 while index starts at 0 so i used index directly
     // const leftToDos = this.todoList.splice(id, 1);
     // return this.todoList;
+    //find the index of the selected item
+
+    const foundIndex = this.todoList.indexOf(todo);
+
+    //then splice perform the delete task of the item at the index found
+
+    const leftToDoItems = this.todoList.splice(foundIndex, 1);
+
+    console.log(foundIndex);
+
+    return this.todoList;
+
     //
     //this requires creating a new array to be returned
     // const NewtodoLists = [];

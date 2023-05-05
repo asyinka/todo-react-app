@@ -32,7 +32,7 @@ export default function TodoList({
           </p>
 
           <span
-            onClick={() => handleDeleteToDoItem(todoItems.indexOf(todoItem))}
+            onClick={() => handleDeleteToDoItem(todoItem)}
             className="cursor-pointer "
           >
             <MdDeleteOutline />

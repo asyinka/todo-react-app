@@ -18,11 +18,11 @@ function App() {
 
   //this function deletes todo Item
   const handleDeleteToDoItem = (id) => {
-    // myTodo.deleteToDoItem(id);
+    myTodo.deleteToDoItem(id);
 
-    // fetchToDos();
+    fetchToDos();
 
-    setTodoItems([...myTodo.deleteToDoItem(id)]);
+    // setTodoItems([...myTodo.deleteToDoItem(id)]);
   };
 
   //this function recalls the todo items and re renders the to do state
@@ -35,11 +35,9 @@ function App() {
 
   const handleSubmission = (event) => {
     if (todoInput == "") {
-      alert("You have to add a to do");
+      alert("You have to add a task");
       return;
     }
-
-    console.log(todoItems);
 
     event.preventDefault();
 
