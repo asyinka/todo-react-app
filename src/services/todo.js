@@ -43,11 +43,27 @@ class Todo {
 
     foundToDoItem.isCompleted = !foundToDoItem.isCompleted;
   }
-  //this deletes select task at index using .splice but our id starts at 1 while index starts at 0 so i used index directly
-  deleteToDoItem(id) {
-    const leftToDos = this.todoList.splice(id, 1);
 
-    return this.todoList;
+  deleteToDoItem(id) {
+    //this deletes select task at index using .splice but our id starts at 1 while index starts at 0 so i used index directly
+    // const leftToDos = this.todoList.splice(id, 1);
+    // return this.todoList;
+    //
+    //this requires creating a new array to be returned
+    // const NewtodoLists = [];
+    // for (let i = 0; i < this.todoList.length; i++) {
+    //   const newTodo = this.todoList[i];
+    //   if (newTodo !== todoList.id) {
+    //     NewtodoLists.push(newTodo);
+    //   }
+    // }
+    // console.log(todoLists);
+    // return todoLists;
+    //
+    //FILTER METHOD: also returns an array and seems like longer and more complicated process
+    // const filteredToDo = this.todoList.filter((todoItem) => {
+    //   return todoItem.id !== id;
+    // });
   }
 }
 
