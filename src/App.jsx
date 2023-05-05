@@ -8,14 +8,35 @@ const myTodo = new Todo();
 
 function App() {
   const [todoItems, setTodoItems] = useState([]);
-  const [todoInput, setTodoInput] = useState("delete and type");
+  const [todoInput, setTodoInput] = useState("");
+  //this function calls the .toggleToDoStatus(id) which will be exported as props
+  const handleToggleToDoStatus = (id) => {
+    myTodo.toggleTodoStatus(id);
+
+    fetchToDos();
+  };
+
+  //this function recalls the todo items and re renders the to do state
+
+  function fetchToDos() {
+    const todoItems = myTodo.getTodoList();
+
+    setTodoItems([...todoItems]);
+  }
 
   const handleSubmission = (event) => {
+    if (todoInput == "") {
+      alert("You have to add a to do");
+      return;
+    }
+
     event.preventDefault();
 
     myTodo.addItemToList(todoInput);
 
     setTodoInput("");
+
+    fetchToDos();
   };
 
   useEffect(() => {
@@ -43,7 +64,11 @@ function App() {
             />
           </form>
           {/*  */}
-          <TodoList todoItems={todoItems} />
+
+          <TodoList
+            todoItems={todoItems}
+            handleToggle={handleToggleToDoStatus}
+          />
         </div>
         {/* //Footer section */}
         <div className="flex justify-between bg-green-100 text-sm py-2 px-2">

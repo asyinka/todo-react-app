@@ -10,9 +10,10 @@ class Todo {
         isCompleted: false,
       },
     ];
-    this.lastId = 0;
+    this.lastId = 1;
   }
   //this function takes the to do to be added, update the id and add isCompleted. Then pushes the to do into the constructor's todoList
+  //this takes the work of .prototype in js class
   addItemToList(todoTitle) {
     const todoObj = {
       title: todoTitle,
@@ -22,12 +23,24 @@ class Todo {
 
     this.todoList.push(todoObj);
   }
-  //this function finally returns the whole todoList object
+  //this function finally returns the whole lists of todoList objects
   getTodoList() {
     return this.todoList;
   }
+  //this changes the icCompleted property of a select todo
+  toggleTodoStatus(id) {
+    const foundToDoIndex = this.todoList.findIndex((todoItem) => {
+      return todoItem.id === id;
+    });
 
-  toggleTodoStatus() {}
+    if (foundToDoIndex === -1) {
+      throw new Error("The to do item is not found");
+    }
+
+    const foundToDoItem = this.todoList[foundToDoIndex];
+
+    foundToDoItem.isCompleted = !foundToDoItem.isCompleted;
+  }
 }
 
 export default Todo;
