@@ -10,7 +10,7 @@ class Todo {
         isCompleted: false,
       },
     ];
-    this.lastId = 0;
+    this.lastId = 1;
   }
   //this function takes the to do to be added, update the id and add isCompleted. Then pushes the to do into the constructor's todoList
   //this takes the work of .prototype in js class
@@ -54,8 +54,6 @@ class Todo {
 
     const leftToDoItems = this.todoList.splice(foundIndex, 1);
 
-    console.log(foundIndex);
-
     return this.todoList;
 
     //
@@ -75,6 +73,19 @@ class Todo {
     //   return todoItem.id !== id;
     // });
   }
+
+  //iterate over toDoList and return check the number of uncompleted events
+
+  checkTodo() {
+    let count = this.todoList.length;
+
+    for (let i = this.todoList.length - 1; i >= 0; i--) {
+      if (this.todoList[i].isCompleted === true) count--;
+    }
+    console.log(count, "submit");
+    return count;
+  }
+  // }
 }
 
 export default Todo;

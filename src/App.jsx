@@ -9,16 +9,32 @@ const myTodo = new Todo();
 function App() {
   const [todoItems, setTodoItems] = useState([]);
   const [todoInput, setTodoInput] = useState("");
+  const [leftItems, setLeftItems] = useState(true);
   //this function calls the .toggleToDoStatus(id) which will be exported as props
   const handleToggleToDoStatus = (id) => {
     myTodo.toggleTodoStatus(id);
 
+    // setUncompletedTask(checkToDo);
+    checkToDos();
+
     fetchToDos();
+  };
+
+  const checkToDos = () => {
+    // console.log("check");
+    let count = todoItems.length;
+
+    for (let i = todoItems.length - 1; i >= 0; i--) {
+      if (todoItems[i].isCompleted === true) count--;
+    }
+
+    return count;
   };
 
   //this function deletes todo Item
   const handleDeleteToDoItem = (id) => {
     myTodo.deleteToDoItem(id);
+    checkToDos();
 
     fetchToDos();
 
@@ -26,7 +42,6 @@ function App() {
   };
 
   //this function recalls the todo items and re renders the to do state
-
   function fetchToDos() {
     const todoItems = myTodo.getTodoList();
 
@@ -46,6 +61,8 @@ function App() {
     setTodoInput("");
 
     fetchToDos();
+
+    checkToDos();
   };
 
   useEffect(() => {
@@ -88,7 +105,7 @@ function App() {
           <div className="flex gap-2 items-center">
             <MdOutlineSearch />
             <div className="h-full w-[1px] bg-gray-400" />
-            <p className="text-xs">3 Items left</p>
+            {<p className="text-xs">{checkToDos()} Items left</p>}
           </div>
 
           <div className="flex gap-2 text-xs">
