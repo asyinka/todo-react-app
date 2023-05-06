@@ -36,7 +36,7 @@ function App() {
   useEffect(() => {
     const count = noOfToDosUndone();
 
-    setLeftItems(count > 1);
+    setLeftItems(count > 0);
   }, [todoItems]);
 
   //this function deletes todo Item
@@ -55,7 +55,7 @@ function App() {
 
     setTodoItems([...todoItems]);
   }
-
+  //this function tests and checks the leftItems state
   function checkLeftItems() {
     console.log(leftItems);
   }
