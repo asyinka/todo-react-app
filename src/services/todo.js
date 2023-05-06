@@ -73,19 +73,6 @@ class Todo {
     //   return todoItem.id !== id;
     // });
   }
-
-  //iterate over toDoList and return check the number of uncompleted events
-
-  checkTodo() {
-    let count = this.todoList.length;
-
-    for (let i = this.todoList.length - 1; i >= 0; i--) {
-      if (this.todoList[i].isCompleted === true) count--;
-    }
-    console.log(count, "submit");
-    return count;
-  }
-  // }
 }
 
 export default Todo;
