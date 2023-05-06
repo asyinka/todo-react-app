@@ -14,13 +14,15 @@ function App() {
   const handleToggleToDoStatus = (id) => {
     myTodo.toggleTodoStatus(id);
 
+    checkLeftItems();
+
     // setUncompletedTask(checkToDo);
-    checkToDos();
+    noOfToDosUndone();
 
     fetchToDos();
   };
 
-  const checkToDos = () => {
+  const noOfToDosUndone = () => {
     // console.log("check");
     let count = todoItems.length;
 
@@ -31,10 +33,16 @@ function App() {
     return count;
   };
 
+  useEffect(() => {
+    const count = noOfToDosUndone();
+
+    setLeftItems(count > 1);
+  }, [todoItems]);
+
   //this function deletes todo Item
   const handleDeleteToDoItem = (id) => {
     myTodo.deleteToDoItem(id);
-    checkToDos();
+    noOfToDosUndone();
 
     fetchToDos();
 
@@ -46,6 +54,10 @@ function App() {
     const todoItems = myTodo.getTodoList();
 
     setTodoItems([...todoItems]);
+  }
+
+  function checkLeftItems() {
+    console.log(leftItems);
   }
 
   const handleSubmission = (event) => {
@@ -62,7 +74,7 @@ function App() {
 
     fetchToDos();
 
-    checkToDos();
+    noOfToDosUndone();
   };
 
   useEffect(() => {
@@ -105,7 +117,9 @@ function App() {
           <div className="flex gap-2 items-center">
             <MdOutlineSearch />
             <div className="h-full w-[1px] bg-gray-400" />
-            {<p className="text-xs">{checkToDos()} Items left</p>}
+            {leftItems && (
+              <p className="text-xs">{noOfToDosUndone()} Items left</p>
+            )}
           </div>
 
           <div className="flex gap-2 text-xs">
