@@ -1,11 +1,10 @@
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MdOutlineSearch } from "react-icons/md";
 import { useEffect, useState } from "react";
 import Badge from "./components/badge";
 import TodoList from "./components/todo-list";
 import Todo from "./services/Todo";
-toast.configure();
 
 const myTodo = new Todo();
 
@@ -65,7 +64,9 @@ function App() {
 
   const handleSubmission = (event) => {
     if (todoInput == "") {
-      toast("You have to add a task");
+      toast.info("You have to add a task", {
+        position: toast.POSITION.TOP_CENTER,
+      });
       return;
     }
 
@@ -142,6 +143,7 @@ function App() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
