@@ -1,8 +1,11 @@
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { MdOutlineSearch } from "react-icons/md";
-import Badge from "./components/badge";
 import { useEffect, useState } from "react";
+import Badge from "./components/badge";
 import TodoList from "./components/todo-list";
 import Todo from "./services/Todo";
+toast.configure();
 
 const myTodo = new Todo();
 
@@ -62,7 +65,7 @@ function App() {
 
   const handleSubmission = (event) => {
     if (todoInput == "") {
-      alert("You have to add a task");
+      toast("You have to add a task");
       return;
     }
 
