@@ -71,26 +71,21 @@ function App() {
     myTodo.addItemToList(todoInput);
     setTodoInput("");
 
-<<<<<<< HEAD
     fetchToDos();
 
     noOfToDosUndone();
-=======
-    fetchTodos()
->>>>>>> fa459985fcac83305ba00b05de3d51fc8ffb292f
   };
 
   const handleToggleStatus = (id) => {
-    myTodo.toggleTodoStatus(id)
+    myTodo.toggleTodoStatus(id);
 
-
-    fetchTodos()
-  }
+    fetchTodos();
+  };
 
   const fetchTodos = () => {
     const todoItems = myTodo.getTodoList();
     setTodoItems([...todoItems]);
-  }
+  };
 
   useEffect(() => {
     const todoItems = myTodo.getTodoList();
@@ -117,11 +112,6 @@ function App() {
             />
           </form>
           {/*  */}
-<<<<<<< HEAD
-=======
-          <TodoList onToggleStatus={handleToggleStatus} todoItems={todoItems} />
-        </div>
->>>>>>> fa459985fcac83305ba00b05de3d51fc8ffb292f
 
           <TodoList
             todoItems={todoItems}
