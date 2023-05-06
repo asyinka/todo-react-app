@@ -1,4 +1,4 @@
-import { MdAdd, MdOutlineCancel, MdOutlineSearch } from "react-icons/md";
+import { MdOutlineSearch } from "react-icons/md";
 import Badge from "./components/badge";
 import { useEffect, useState } from "react";
 import TodoList from "./components/todo-list";
@@ -69,13 +69,28 @@ function App() {
     event.preventDefault();
 
     myTodo.addItemToList(todoInput);
-
     setTodoInput("");
 
+<<<<<<< HEAD
     fetchToDos();
 
     noOfToDosUndone();
+=======
+    fetchTodos()
+>>>>>>> fa459985fcac83305ba00b05de3d51fc8ffb292f
   };
+
+  const handleToggleStatus = (id) => {
+    myTodo.toggleTodoStatus(id)
+
+
+    fetchTodos()
+  }
+
+  const fetchTodos = () => {
+    const todoItems = myTodo.getTodoList();
+    setTodoItems([...todoItems]);
+  }
 
   useEffect(() => {
     const todoItems = myTodo.getTodoList();
@@ -102,6 +117,11 @@ function App() {
             />
           </form>
           {/*  */}
+<<<<<<< HEAD
+=======
+          <TodoList onToggleStatus={handleToggleStatus} todoItems={todoItems} />
+        </div>
+>>>>>>> fa459985fcac83305ba00b05de3d51fc8ffb292f
 
           <TodoList
             todoItems={todoItems}

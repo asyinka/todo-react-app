@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { MdAdd, MdOutlineCancel, MdDeleteOutline } from "react-icons/md";
 
+<<<<<<< HEAD
 export default function TodoList({
   todoItems,
   handleToggle,
   handleDeleteToDoItem,
 }) {
+=======
+export default function TodoList({ todoItems, onToggleStatus }) {
+
+>>>>>>> fa459985fcac83305ba00b05de3d51fc8ffb292f
   if (todoItems.length == 0) {
     return (
       <div className="py-3 flex justify-center items-center flex-col gap-2 text-gray-500">
@@ -21,6 +26,7 @@ export default function TodoList({
   return (
     <>
       {todoItems.map((todoItem, index) => (
+<<<<<<< HEAD
         <div key={index} className={`flex  gap-2 py-2 border-b-[0.5px] `}>
           <input type="checkbox" onChange={() => handleToggle(todoItem.id)} />
           <p
@@ -33,10 +39,15 @@ export default function TodoList({
 
           <span
             onClick={() => handleDeleteToDoItem(todoItem)}
-            className="cursor-pointer "
+            className="cursor-pointer hover:text-red-700 "
           >
             <MdDeleteOutline />
           </span>
+=======
+        <div key={index} className="flex  gap-2 py-2 border-b-[0.5px]">
+          <input type="checkbox" onChange={() => onToggleStatus(todoItem.id)} />
+          <p className={`text-gray-600 text-sm ${todoItem.isCompleted && 'line-through'}`}>{todoItem.title}</p>
+>>>>>>> fa459985fcac83305ba00b05de3d51fc8ffb292f
         </div>
       ))}
     </>
